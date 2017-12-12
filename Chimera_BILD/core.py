@@ -94,11 +94,23 @@ class BILD_element(object):
 
 	def _draw_sphere(self):
 		x, y, z = self.origin
+		col = str(self.color).replace(",", " ")
 		bild = """
 		.color {}
 		.transparency {}
 		.sphere {} {} {} {}
-		""".format(self.color, 0.3, x, y, z, self.size)
+		""".format(col, self.transparency, x, y, z, self.radius1)
+		return self._build_vrml(bild)
+
+	def _draw_vector(self):
+		x1, y1, z1 = self.origin
+		x2, y2, z2 = self.end
+		col = str(self.color).replace(",", " ")
+		bild = """
+		.color {}
+		.transparency {}
+		.vector {} {} {} {} {} {} 
+		""".format(col, self.transparency, x1, y1, z1, x2, y2, z2)
 		return self._build_vrml(bild)
 
 	def _build_vrml(self, bild, name=None):
@@ -139,16 +151,13 @@ def cylinder(x1, y1, z1, x2, y2, z2, r, c, transparency=0, open=False, id=100):
 	cylinder_elem = BILD_element(shape="cylinder", origin=(x1,y1,z1), end=(x2,y2,z2), 
 					r1=r, color=c, transparency=transparency, parent_id=id, opened=open)
 	cylinder_elem.draw()
-"""
-			p4_elem = p4_element(shape="sphere", size=(mergeTol/2), origin=chimera.Point(feat.GetPos()[0],feat.GetPos()[1],feat.GetPos()[2]), color=_featColors[feat.GetFamily()])
-			p4_elem.draw()
-		
-		if feat.featDirs:
-			ps, fType = feat.featDirs			
-			for tail, head in ps:
-				if fType == 'linear':
-					p4_elem = p4_element(shape="arrow", origin=tail, end=head, color=_featColors[feat.GetFamily()])
-				elif fType =='cone':
-					p4_elem = p4_element(shape="cone", origin=head, end=tail, color=_featColors[feat.GetFamily()], size=(1.33))
-				p4_elem.draw()
-"""
+
+def sphere(x1, y1, z1, r, c, transparency=0, id=100):
+	sphere_elem = BILD_element(shape="sphere", origin=(x1,y1,z1), 
+					r1=r, color=c, transparency=transparency, parent_id=id)
+	sphere_elem.draw()
+
+def vector(x1, y1, z1, x2, y2, z2, c, transparency=0, id=100):
+	vector_elem = BILD_element(shape="vector", origin=(x1,y1,z1), end=(x2,y2,z2), 
+					color=c, transparency=transparency, parent_id=id)
+	vector_elem.draw()

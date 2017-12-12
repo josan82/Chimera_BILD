@@ -28,11 +28,19 @@ def cmd_cylinder(cmdName, args):
 	from Chimera_BILD import cylinder
 	doExtensionFunc(cylinder, args)
 
+def cmd_sphere(cmdName, args):
+	from Midas.midas_text import doExtensionFunc
+	from Chimera_BILD import sphere
+	doExtensionFunc(sphere, args)
+
+def cmd_vector(cmdName, args):
+	from Midas.midas_text import doExtensionFunc
+	from Chimera_BILD import vector
+	doExtensionFunc(vector, args)
+
 addCommand("arrow", cmd_arrow)
 addCommand("box", cmd_box)
 addCommand("cone", cmd_cone)
 addCommand("cylinder", cmd_cylinder)
-"""
 addCommand("sphere", cmd_sphere)
 addCommand("vector", cmd_vector)
-"""
