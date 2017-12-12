@@ -8,6 +8,8 @@ The name can be a built-in name, a name defined previously with colordef, or an 
 
 In all commands, the transparency parameter (optional, default 0) can be set with a value of a range from 0.0 (not transparent) to 1.0 (completely transparent).
 
+In all commands, the id of the Chimera's object that will be created can be set with an integer value with the optional paremeter id (default 100).
+
 For now, the following commands are implemented:
 
 arrow x1 y1 z1 x2 y2 z2 color [transparency] [r1] [r2] [rho] [id]
@@ -15,3 +17,6 @@ Draw an arrow from (x1, y1, z1) to (x2, y2, z2). An arrow consists of a cylinder
 
 box x1 y1 z1 x2 y2 z2 color [transparency]
 Draw a box with opposite corners at (x1, y1, z1) and (x2, y2, z2).
+
+cone x1 y1 z1 x2 y2 z2 r color [transparency] [open] [id]
+Draw a cone with a base of radius r centered at (x1, y1, z1) and a tip at (x2, y2, z2). If the optional parameter open is True (default is False), the base of the cone will be invisible.
