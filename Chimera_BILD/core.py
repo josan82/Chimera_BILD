@@ -46,26 +46,6 @@ class BILD_element(object):
 	def draw(self):
 		self._vrml_shape = getattr(self, '_draw_' + self.shape)()
 
-	def _draw_box(self):
-		x1, y1, z1 = self.origin
-		x2, y2, z2 = self.end
-		col = str(self.color).replace(",", " ")
-		bild = """
-		.color {}
-		.transparency {}
-		.box {} {} {} {} {} {} 
-		""".format(col, self.transparency, x1, y1, z1, x2, y2, z2)
-		return self._build_vrml(bild)
-
-	def _draw_sphere(self):
-		x, y, z = self.origin
-		bild = """
-		.color {}
-		.transparency {}
-		.sphere {} {} {} {}
-		""".format(self.color, 0.3, x, y, z, self.size)
-		return self._build_vrml(bild)
-
 	def _draw_arrow(self):
 		x1, y1, z1 = self.origin
 		x2, y2, z2 = self.end
@@ -75,6 +55,17 @@ class BILD_element(object):
 		.transparency {}
 		.arrow {} {} {} {} {} {} {} {} {}
 		""".format(col, self.transparency, x1, y1, z1, x2, y2, z2, self.radius1, self.radius2, self.rho)
+		return self._build_vrml(bild)
+
+	def _draw_box(self):
+		x1, y1, z1 = self.origin
+		x2, y2, z2 = self.end
+		col = str(self.color).replace(",", " ")
+		bild = """
+		.color {}
+		.transparency {}
+		.box {} {} {} {} {} {} 
+		""".format(col, self.transparency, x1, y1, z1, x2, y2, z2)
 		return self._build_vrml(bild)
 
 	def _draw_cone(self):
@@ -87,6 +78,27 @@ class BILD_element(object):
 		.transparency {}
 		.cone {} {} {} {} {} {} {} {}
 		""".format(col, self.transparency, x1, y1, z1, x2, y2, z2, self.radius1, op)
+		return self._build_vrml(bild)
+
+	def _draw_cylinder(self):
+		x1, y1, z1 = self.origin
+		x2, y2, z2 = self.end
+		col = str(self.color).replace(",", " ")
+		op = 'open' if self.open else ""
+		bild = """
+		.color {}
+		.transparency {}
+		.cylinder {} {} {} {} {} {} {} {}
+		""".format(col, self.transparency, x1, y1, z1, x2, y2, z2, self.radius1, op)
+		return self._build_vrml(bild)
+
+	def _draw_sphere(self):
+		x, y, z = self.origin
+		bild = """
+		.color {}
+		.transparency {}
+		.sphere {} {} {} {}
+		""".format(self.color, 0.3, x, y, z, self.size)
 		return self._build_vrml(bild)
 
 	def _build_vrml(self, bild, name=None):
@@ -119,9 +131,14 @@ def box(x1, y1, z1, x2, y2, z2, c, transparency=0, id=100):
 	box_elem.draw()
 
 def cone(x1, y1, z1, x2, y2, z2, r, c, transparency=0, open=False, id=100):
-	cone_elem = BILD_element(shape="arrow", origin=(x1,y1,z1), end=(x2,y2,z2), 
+	cone_elem = BILD_element(shape="cone", origin=(x1,y1,z1), end=(x2,y2,z2), 
 					r1=r, color=c, transparency=transparency, parent_id=id, opened=open)
 	cone_elem.draw()
+
+def cylinder(x1, y1, z1, x2, y2, z2, r, c, transparency=0, open=False, id=100):
+	cylinder_elem = BILD_element(shape="cylinder", origin=(x1,y1,z1), end=(x2,y2,z2), 
+					r1=r, color=c, transparency=transparency, parent_id=id, opened=open)
+	cylinder_elem.draw()
 """
 			p4_elem = p4_element(shape="sphere", size=(mergeTol/2), origin=chimera.Point(feat.GetPos()[0],feat.GetPos()[1],feat.GetPos()[2]), color=_featColors[feat.GetFamily()])
 			p4_elem.draw()
