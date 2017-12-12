@@ -15,7 +15,7 @@ Installation (Linux):
 
 3 - Install the chimera_BILD extension with pip (substituting ``<$PATH>`` by the path where you want the extension to be installed):
 
-``pip install -U git+https://github.com/josan82/chimera_BILD.git -t <$PATH>``
+``pip install -U git+https://github.com/josan82/Chimera_BILD.git -t <$PATH>``
 
 4 - Register the chimera_BILD extension in UCSF Chimera: You have to add the ``<$PATH>`` where you installed the extension in ``Favorites -> Preferences -> Category:Tools`` dialog of UCSF Chimera.
 
