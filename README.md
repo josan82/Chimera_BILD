@@ -1,5 +1,17 @@
-# Chimera-BILD
+# Chimera_BILD
 Implementation of some BILD commands as a Chimera extension, to work directly with them in the Chimera's command line.
+
+
+Installation:
+-------------
+
+1 - If you don't have Chimera installed, download the [latest stable copy](http://www.cgl.ucsf.edu/chimera/download.html) and install it with:
+
+    chmod +x chimera-*.bin && ./chimera-*.bin
+
+2 - Install the Chimera extension
+
+3 - Register the Chimera extension
 
 Usage of the commands:
 ----------------------
@@ -11,7 +23,7 @@ The name can be a built-in name, a name defined previously with colordef, or an 
 
 - In all commands, the id of the Chimera's object that will be created can be set with an integer value with the optional paremeter ``id`` (default 100).
 
-For now, the following commands are implemented:
+For now, the following commands are implemented to use in the command line of UCSF Chimera:
 
 ``arrow x1 y1 z1 x2 y2 z2 color [transparency] [r1] [r2] [rho] [id]``
 
