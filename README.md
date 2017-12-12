@@ -2,16 +2,22 @@
 Implementation of some BILD commands as a Chimera extension, to work directly with them in the Chimera's command line.
 
 
-Installation:
+Installation (Linux):
 -------------
 
 1 - If you don't have Chimera installed, download the [latest stable copy](http://www.cgl.ucsf.edu/chimera/download.html) and install it with:
 
-    chmod +x chimera-*.bin && ./chimera-*.bin
+``chmod +x chimera-*.bin && ./chimera-*.bin``
 
-2 - Install the Chimera extension
+2 - If you don't have git installed, install it with:
 
-3 - Register the Chimera extension
+``sudo apt-get install git``
+
+3 - Install the chimera_BILD extension with pip (substituting ``<$PATH>`` by the path where you want the extension to be installed):
+
+``pip install -U git+https://github.com/josan82/chimera_BILD.git -t <$PATH>``
+
+4 - Register the chimera_BILD extension in UCSF Chimera: You have to add the ``<$PATH>`` where you installed the extension in ``Favorites -> Preferences -> Category:Tools`` dialog of UCSF Chimera.
 
 Usage of the commands:
 ----------------------
