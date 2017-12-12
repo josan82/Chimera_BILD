@@ -23,3 +23,9 @@ Draw a cone with a base of radius r centered at (x1, y1, z1) and a tip at (x2, y
 
 cylinder x1 y1 z1 x2 y2 z2 r color [transparency] [open] [id]
 Draw a cylinder with radius r and bases centered at (x1, y1, z1) and (x2, y2, z2). If the optional parameter open is True (default is False), the bases of the cylinder will be invisible.
+
+sphere x y z r color [transparency] [id]
+Draw a sphere centered at (x, y, z) with radius r.
+
+vector x1 y1 z1 x2 y2 z2 color [transparency] [id]
+Draw a line segment from (x1, y1, z1) to (x2, y2, z2).
