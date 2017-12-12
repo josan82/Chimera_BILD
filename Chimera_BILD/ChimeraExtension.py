@@ -10,37 +10,17 @@ Tix._default_root = tk._default_root
 
 def cmd_arrow(cmdName, args):
 	from Midas.midas_text import doExtensionFunc
-	from chimera_BILD import arrow
+	from Chimera_BILD import arrow
 	doExtensionFunc(arrow, args)
-"""
+
 def cmd_box(cmdName, args):
 	from Midas.midas_text import doExtensionFunc
-	from chimera-BILD import chimera-BILD
+	from Chimera_BILD import box
 	doExtensionFunc(box, args)
 
-def cmd_cone(cmdName, args):
-	from Midas.midas_text import doExtensionFunc
-	from chimera-BILD import chimera-BILD
-	doExtensionFunc(cone, args)
-
-def cmd_cylinder(cmdName, args):
-	from Midas.midas_text import doExtensionFunc
-	from chimera-BILD import chimera-BILD
-	doExtensionFunc(cylinder, args)
-
-def cmd_sphere(cmdName, args):
-	from Midas.midas_text import doExtensionFunc
-	from chimera-BILD import chimera-BILD
-	doExtensionFunc(sphere, args)
-
-def cmd_vector(cmdName, args):
-	from Midas.midas_text import doExtensionFunc
-	from chimera-BILD import chimera-BILD
-	doExtensionFunc(vector, args)
-"""
 addCommand("arrow", cmd_arrow)
-"""
 addCommand("box", cmd_box)
+"""
 addCommand("cone", cmd_cone)
 addCommand("cylinder", cmd_cylinder)
 addCommand("sphere", cmd_sphere)
