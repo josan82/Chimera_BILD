@@ -20,7 +20,7 @@ class BILD_element(object):
 	SUPPORTED_SHAPES = set('arrow box cone cylinder sphere vector'.split())
 
 	def __init__(self, shape, origin, color, name='BILD', transparency=0, 
-				parent_id=100, end=None, r1=None, r2=None, rho=None):
+				parent_id=100, end=None, r1=None, r2=None, rho=None, opened=False):
 		if shape not in self.SUPPORTED_SHAPES:
 			raise ValueError('`shape` should be one of: '
 							 '{}'.format(', '.join(self.SUPPORTED_SHAPES)))
@@ -33,6 +33,7 @@ class BILD_element(object):
 		self.end = end
 		self.color = color
 		self.transparency = transparency
+		self.open = opened
 		self._vrml_shape = None
 		self._id = parent_id
 		self._subid = 0
@@ -79,11 +80,13 @@ class BILD_element(object):
 	def _draw_cone(self):
 		x1, y1, z1 = self.origin
 		x2, y2, z2 = self.end
+		col = str(self.color).replace(",", " ")
+		op = 'open' if self.open else ""
 		bild = """
 		.color {}
 		.transparency {}
 		.cone {} {} {} {} {} {} {} {}
-		""".format(self.color, 0.5, x1, y1, z1, x2, y2, z2, self.size, 'open')
+		""".format(col, self.transparency, x1, y1, z1, x2, y2, z2, self.radius1, op)
 		return self._build_vrml(bild)
 
 	def _build_vrml(self, bild, name=None):
@@ -115,6 +118,10 @@ def box(x1, y1, z1, x2, y2, z2, c, transparency=0, id=100):
 					color=c, transparency=transparency, parent_id=id)
 	box_elem.draw()
 
+def cone(x1, y1, z1, x2, y2, z2, r, c, transparency=0, open=False, id=100):
+	cone_elem = BILD_element(shape="arrow", origin=(x1,y1,z1), end=(x2,y2,z2), 
+					r1=r, color=c, transparency=transparency, parent_id=id, opened=open)
+	cone_elem.draw()
 """
 			p4_elem = p4_element(shape="sphere", size=(mergeTol/2), origin=chimera.Point(feat.GetPos()[0],feat.GetPos()[1],feat.GetPos()[2]), color=_featColors[feat.GetFamily()])
 			p4_elem.draw()

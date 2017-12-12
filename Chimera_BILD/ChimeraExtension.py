@@ -18,10 +18,15 @@ def cmd_box(cmdName, args):
 	from Chimera_BILD import box
 	doExtensionFunc(box, args)
 
+def cmd_cone(cmdName, args):
+	from Midas.midas_text import doExtensionFunc
+	from Chimera_BILD import cone
+	doExtensionFunc(cone, args)
+
 addCommand("arrow", cmd_arrow)
 addCommand("box", cmd_box)
-"""
 addCommand("cone", cmd_cone)
+"""
 addCommand("cylinder", cmd_cylinder)
 addCommand("sphere", cmd_sphere)
 addCommand("vector", cmd_vector)
