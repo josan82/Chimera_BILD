@@ -20,3 +20,6 @@ Draw a box with opposite corners at (x1, y1, z1) and (x2, y2, z2).
 
 cone x1 y1 z1 x2 y2 z2 r color [transparency] [open] [id]
 Draw a cone with a base of radius r centered at (x1, y1, z1) and a tip at (x2, y2, z2). If the optional parameter open is True (default is False), the base of the cone will be invisible.
+
+cylinder x1 y1 z1 x2 y2 z2 r color [transparency] [open] [id]
+Draw a cylinder with radius r and bases centered at (x1, y1, z1) and (x2, y2, z2). If the optional parameter open is True (default is False), the bases of the cylinder will be invisible.
