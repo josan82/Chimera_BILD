@@ -17,7 +17,7 @@ from Bld2VRML import openFileObject as openBildFileObject
 
 class BILD_element(object):
 
-	SUPPORTED_SHAPES = set('arrow box cone cylinder sphere vector'.split())
+	SUPPORTED_SHAPES = ('arrow', 'box', 'cone', 'cylinder', 'sphere', 'vector')
 
 	def __init__(self, shape, origin, color, name='BILD', transparency=0, 
 				parent_id=100, end=None, r1=None, r2=None, rho=None, opened=False):
